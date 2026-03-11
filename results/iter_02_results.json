@@ -1,0 +1,23 @@
+{
+  "experiment_type": "embedding_study",
+  "hypothesis": "Chain-of-thought prompting will show measurably different semantic clustering patterns",
+  "timestamp": 1773222147.726816,
+  "success": true,
+  "error": null,
+  "n_problems": 15,
+  "direct_clustering": {
+    "silhouette_score": 0.08073686808347702,
+    "n_clusters": 7,
+    "condition": "Direct",
+    "n_samples": 15
+  },
+  "cot_clustering": {
+    "silhouette_score": 0.12430653721094131,
+    "n_clusters": 7,
+    "condition": "Chain-of-Thought",
+    "n_samples": 15
+  },
+  "silhouette_difference": 0.043569669127464294,
+  "success_threshold": 0.05,
+  "hypothesis_supported": false
+}

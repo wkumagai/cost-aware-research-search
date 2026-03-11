@@ -1,0 +1,303 @@
+{
+  "experiment_data": {
+    "direct_answers": [
+      {
+        "problem_id": 0,
+        "response": "It will take 20 minutes to fill a 120-liter empty tank.",
+        "extracted_answer": 120.0,
+        "correct_answer": 30,
+        "accuracy": false,
+        "coherence_score": 1
+      },
+      {
+        "problem_id": 1,
+        "response": "Each person pays $32.10 in total.",
+        "extracted_answer": 32.1,
+        "correct_answer": 33.21,
+        "accuracy": false,
+        "coherence_score": 1
+      },
+      {
+        "problem_id": 2,
+        "response": "$66.56",
+        "extracted_answer": 66.56,
+        "correct_answer": 64.8,
+        "accuracy": false,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 3,
+        "response": "The area of the circular pool is calculated using the formula A = \u03c0r^2, where r is the radius.\n\nA = 3.14 * 5^2\nA = 3.14 * 25\nA = 78.5 square meters\n\nThe total cost to cover the pool is:\nTotal Cost = Area * Cost per square meter\nTotal Cost = 78.5 * $8\nTotal Cost = $628\n\nTherefore, the total cost to cover the pool is $628.",
+        "extracted_answer": 628.0,
+        "correct_answer": 628,
+        "accuracy": true,
+        "coherence_score": 3
+      },
+      {
+        "problem_id": 4,
+        "response": "30%",
+        "extracted_answer": 30.0,
+        "correct_answer": 30,
+        "accuracy": true,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 5,
+        "response": "45 - (1/3 * 45) + 12 = 45 - 15 + 12 = 42. \n\nSarah now has 42 stickers.",
+        "extracted_answer": 42.0,
+        "correct_answer": 42,
+        "accuracy": true,
+        "coherence_score": 2
+      },
+      {
+        "problem_id": 6,
+        "response": "The probability of picking a red ball on the first draw is 15/25. The probability of picking a red ball on the second draw, given that a red ball was picked on the first draw, is 14/24.\n\nTherefore, the probability of picking 2 red balls is (15/25) * (14/24) = 0.35. \n\nThe final numerical answer is 0.35.",
+        "extracted_answer": 0.35,
+        "correct_answer": 0.42,
+        "accuracy": false,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 7,
+        "response": "7",
+        "extracted_answer": 7.0,
+        "correct_answer": 5,
+        "accuracy": false,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 8,
+        "response": "$80",
+        "extracted_answer": 80.0,
+        "correct_answer": 80,
+        "accuracy": true,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 9,
+        "response": "$1,229.50",
+        "extracted_answer": 229.5,
+        "correct_answer": 1473.5,
+        "accuracy": false,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 10,
+        "response": "Average speed for the entire trip is 150 km/h.",
+        "extracted_answer": 150.0,
+        "correct_answer": 60,
+        "accuracy": false,
+        "coherence_score": 1
+      },
+      {
+        "problem_id": 11,
+        "response": "36 fruits",
+        "extracted_answer": 36.0,
+        "correct_answer": 42,
+        "accuracy": false,
+        "coherence_score": 0
+      },
+      {
+        "problem_id": 12,
+        "response": "The perimeter of the garden is 2(8 + 6) = 2(14) = 28 meters.\n\nIt will cost $15 x 28 = $420 to fence the entire perimeter. \n\nTherefore, it will cost $420 to fence the entire perimeter.",
+        "extracted_answer": 420.0,
+        "correct_answer": 420,
+        "accuracy": true,
+        "coherence_score": 2
+      }
+    ],
+    "chain_of_thought_answers": [
+      {
+        "problem_id": 0,
+        "response": "1. We need to find how long it will take to fill a 120-liter empty tank.\n2. Given information:\n- Water flows into the tank at 12 liters per minute.\n- Water flows out of the tank at 8 liters per minute.\n- The tank has a capacity of 120 liters.\n\n3. Let x be the time it takes to fill the tank.\n- The rate of water filling the tank is 12 liters per minute.\n- The rate of water emptying the tank is 8 liters per minute.\n- The net rate of water filling the tank is 12 - 8 = 4 liters per minute.\n\n4. To fill a 120-liter tank at a rate of 4 liters per minute:\n120 liters / 4 liters per minute = 30 minutes\n\nTherefore, it will take 30 minutes to fill a 120-liter empty tank.",
+        "extracted_answer": 120.0,
+        "correct_answer": 30,
+        "accuracy": false,
+        "coherence_score": 5
+      },
+      {
+        "problem_id": 1,
+        "response": "1. We need to find how much each person pays in total.\n2. Given information:\n- Total bill: $84.60\n- Tip percentage: 18%\n3. Calculation steps:\n- Calculate the tip amount: $84.60 * 0.18 = $15.228\n- Add the tip amount to the total bill: $84.60 + $15.228 = $99.828\n- Divide the total amount by 3 (number of friends): $99.828 / 3 = $33.276\n4. Each person pays $33.28 in total.",
+        "extracted_answer": 33.28,
+        "correct_answer": 33.21,
+        "accuracy": true,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 2,
+        "response": "1. We need to find the final price of the jacket after the discount and sales tax.\n2. Given:\n- Original price of the jacket: $80\n- Discount: 25%\n- Sales tax: 8%\n3. Calculation steps:\n- Calculate the amount of discount:\nDiscount = 25% of $80\nDiscount = 0.25 * $80\nDiscount = $20\n- Calculate the price of the jacket after the discount:\nPrice after discount = Original price - Discount\nPrice after discount = $80 - $20\nPrice after discount = $60\n- Calculate the amount of sales tax:\nSales tax = 8% of $60\nSales tax = 0.08 * $60\nSales tax = $4.80\n- Calculate the final price:\nFinal price = Price after discount + Sales tax\nFinal price = $60 + $4.80\nFinal price = $64.80\n4. The final price of the jacket after",
+        "extracted_answer": 4.0,
+        "correct_answer": 64.8,
+        "accuracy": false,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 3,
+        "response": "1. We need to find the total cost to cover the circular pool.\n\n2. Given:\n- Radius of the pool = 5 meters\n- Cost per square meter = $8\n- \u03c0 = 3.14\n\n3. Calculation:\n- The area of a circle is given by the formula: A = \u03c0r^2, where r is the radius.\n- Substituting the given radius into the formula: A = 3.14 * 5^2 = 3.14 * 25 = 78.5 square meters\n- The total cost to cover the pool is the area multiplied by the cost per square meter: Total cost = 78.5 * $8 = $628\n\n4. The total cost to cover the circular pool is $628.",
+        "extracted_answer": 628.0,
+        "correct_answer": 628,
+        "accuracy": true,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 4,
+        "response": "1. We need to find the percentage increase in profit.\n2. Given information:\n   Initial profit = $50,000\n   Final profit = $65,000\n3. Calculation:\n   Step 1: Find the difference in profit:\n   $65,000 - $50,000 = $15,000\n   Step 2: Calculate the percentage increase:\n   Percentage Increase = (Difference in profit / Initial profit) x 100%\n                      = ($15,000 / $50,000) x 100%\n                      = 0.3 x 100%\n                      = 30%\n4. Final Answer: The percentage increase in profit is 30%.",
+        "extracted_answer": 30.0,
+        "correct_answer": 30,
+        "accuracy": true,
+        "coherence_score": 5
+      },
+      {
+        "problem_id": 5,
+        "response": "1. We need to find out how many stickers Sarah has now.\n2. Given information:\n- Sarah starts with 45 stickers\n- She gives away 1/3 of them\n- She buys 12 more stickers\n3. Calculation steps:\n- Sarah gives away 1/3 of 45 stickers: 45 * 1/3 = 45/3 = 15 stickers\n- After giving away stickers, Sarah has 45 - 15 = 30 stickers left\n- Sarah buys 12 more stickers: 30 + 12 = 42 stickers\n4. Sarah has 42 stickers now.",
+        "extracted_answer": 42.0,
+        "correct_answer": 42,
+        "accuracy": true,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 6,
+        "response": "1. We need to find the probability that both balls picked are red.\n2. Given information: 15 red balls, 10 blue balls, picking 2 balls without replacement.\n3. \n- Probability of picking a red ball on the first draw: 15/25\n- Probability of picking a red ball on the second draw after picking a red ball on the first draw: 14/24\n- Multiply the probabilities: (15/25) * (14/24) = 210/600\n4. The final answer is 210/600, which simplifies to 7/20. Therefore, the probability that both balls picked are red is 7/20.",
+        "extracted_answer": 20.0,
+        "correct_answer": 0.42,
+        "accuracy": false,
+        "coherence_score": 5
+      },
+      {
+        "problem_id": 7,
+        "response": "1. We need to find the number of students who like neither pizza nor burgers.\n\n2. Given information:\n- Total number of students (N) = 30\n- Number of students who like pizza (P) = 18\n- Number of students who like burgers (B) = 12\n- Number of students who like both pizza and burgers = 5\n\n3. Calculate the number of students who like either pizza or burgers:\nTotal students who like either pizza or burgers = P + B - (students who like both)\nTotal students who like either pizza or burgers = 18 + 12 - 5\nTotal students who like either pizza or burgers = 25\n\n4. Calculate the number of students who like neither pizza nor burgers:\nNumber of students who like neither pizza nor burgers = Total students - Total students who like either pizza or burgers\nNumber of students who like neither pizza nor burgers = 30 - 25\nNumber of students who like neither pizza nor burgers",
+        "extracted_answer": 25.0,
+        "correct_answer": 5,
+        "accuracy": false,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 8,
+        "response": "1. We need to find out how much money Mark has left after saving for 8 weeks and spending $120 on a gift.\n\n2. Given information:\n- Mark saves $25 per week\n- Mark saved for 8 weeks\n- Mark spent $120 on a gift\n\n3. Calculation steps:\n- Total amount saved in 8 weeks: $25/week * 8 weeks = $200\n- Amount left after buying the gift: $200 - $120 = $80\n\n4. Mark has $80 left after saving for 8 weeks and spending $120 on a gift.",
+        "extracted_answer": 120.0,
+        "correct_answer": 80,
+        "accuracy": false,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 9,
+        "response": "1. We need to find the total amount of money the bakery made from selling cupcakes.\n2. Given information:\n- Number of cupcakes sold on Monday: 234\n- Number of cupcakes sold on Tuesday: 187\n- Cost of each cupcake: $3.50\n3. Calculation steps:\n- Total cupcakes sold = 234 (Monday) + 187 (Tuesday) = 421 cupcakes\n- Total money made = Total cupcakes sold x Cost per cupcake\n- Total money made = 421 cupcakes x $3.50/cupcake\n- Total money made = $1473.50\n4. The bakery made a total of $1473.50 from selling cupcakes.",
+        "extracted_answer": 1473.5,
+        "correct_answer": 1473.5,
+        "accuracy": true,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 10,
+        "response": "1. We need to find Tom's average speed for the entire trip.\n2. Given information:\n- Tom drives 120 km in 2 hours\n- Tom drives 180 km in 3 hours\n3. Calculation steps:\n- Calculate Tom's speed for the first part of the trip: 120 km / 2 hours = 60 km/h\n- Calculate Tom's speed for the second part of the trip: 180 km / 3 hours = 60 km/h\n- Calculate the total distance Tom traveled: 120 km + 180 km = 300 km\n- Calculate the total time Tom spent driving: 2 hours + 3 hours = 5 hours\n- Calculate Tom's average speed for the entire trip: 300 km / 5 hours = 60 km/h\n4. Tom's average speed for the entire trip is 60 km/h.",
+        "extracted_answer": 60.0,
+        "correct_answer": 60,
+        "accuracy": true,
+        "coherence_score": 4
+      },
+      {
+        "problem_id": 11,
+        "response": "1. We need to find the total number of fruits Lisa has after buying 6 more oranges.\n2. Given information:\n- Lisa has 24 apples\n- Lisa has twice as many apples as oranges\n- Lisa buys 6 more oranges\n3. Calculation steps:\n- Since Lisa has twice as many apples as oranges, we can set up the equation: 24 = 2x, where x is the number of oranges Lisa has.\n- Solving for x, we get x = 24 / 2 = 12. So, Lisa has 12 oranges.\n- After buying 6 more oranges, Lisa will have 12 + 6 = 18 oranges.\n- The total number of fruits Lisa has is 24 apples + 18 oranges = 42 fruits.\n4. Lisa has a total of 42 fruits.",
+        "extracted_answer": 42.0,
+        "correct_answer": 42,
+        "accuracy": true,
+        "coherence_score": 4
+      }
+    ],
+    "problems": [
+      {
+        "problem": "Water flows into a tank at 12 liters per minute and flows out at 8 liters per minute. How long will it take to fill a 120-liter empty tank?",
+        "answer": 30,
+        "category": "rates"
+      },
+      {
+        "problem": "Three friends split a restaurant bill of $84.60 equally. If they leave a 18% tip, how much does each person pay in total?",
+        "answer": 33.21,
+        "category": "division_percentages"
+      },
+      {
+        "problem": "A store offers a 25% discount on a jacket that originally costs $80. After the discount, a 8% sales tax is added. What is the final price?",
+        "answer": 64.8,
+        "category": "percentages"
+      },
+      {
+        "problem": "A circular pool has a radius of 5 meters. If it costs $8 per square meter to cover it, what is the total cost? (Use \u03c0 = 3.14)",
+        "answer": 628,
+        "category": "geometry"
+      },
+      {
+        "problem": "A company's profit increased from $50,000 to $65,000. What is the percentage increase?",
+        "answer": 30,
+        "category": "percentages"
+      },
+      {
+        "problem": "Sarah has 45 stickers. She gives away 1/3 of them to her friends and buys 12 more. How many stickers does she have now?",
+        "answer": 42,
+        "category": "fractions"
+      },
+      {
+        "problem": "A box contains 15 red balls and 10 blue balls. If you pick 2 balls without replacement, what is the probability both are red?",
+        "answer": 0.42,
+        "category": "probability"
+      },
+      {
+        "problem": "In a class of 30 students, 18 like pizza, 12 like burgers, and 5 like both. How many students like neither pizza nor burgers?",
+        "answer": 5,
+        "category": "sets"
+      },
+      {
+        "problem": "Mark saves $25 per week. After 8 weeks, he spends $120 on a gift. How much money does he have left?",
+        "answer": 80,
+        "category": "basic_arithmetic"
+      },
+      {
+        "problem": "A bakery sold 234 cupcakes on Monday and 187 cupcakes on Tuesday. If each cupcake costs $3.50, how much money did they make in total?",
+        "answer": 1473.5,
+        "category": "multiplication_addition"
+      },
+      {
+        "problem": "Tom drives 120 km in 2 hours, then 180 km in 3 hours. What is his average speed for the entire trip?",
+        "answer": 60,
+        "category": "averages"
+      },
+      {
+        "problem": "Lisa has twice as many apples as oranges. If she has 24 apples, and she buys 6 more oranges, how many fruits does she have in total?",
+        "answer": 42,
+        "category": "algebra"
+      },
+      {
+        "problem": "A rectangular garden is 8 meters long and 6 meters wide. If fencing costs $15 per meter, how much will it cost to fence the entire perimeter?",
+        "answer": 420,
+        "category": "geometry"
+      },
+      {
+        "problem": "A train leaves at 9:30 AM and travels for 4 hours 45 minutes. What time does it arrive?",
+        "answer": "2:15 PM",
+        "category": "time"
+      },
+      {
+        "problem": "A recipe calls for 2.5 cups of flour to make 20 cookies. How many cups of flour are needed to make 48 cookies?",
+        "answer": 6,
+        "category": "proportions"
+      }
+    ],
+    "timestamp": 1773221537.568052
+  },
+  "analysis": {
+    "direct_accuracy": 38.46153846153847,
+    "direct_coherence": 1.0769230769230769,
+    "cot_accuracy": 58.333333333333336,
+    "cot_coherence": 4.25,
+    "accuracy_improvement": 19.87179487179487,
+    "coherence_improvement": 3.1730769230769234,
+    "success_threshold_met": "True",
+    "sample_size": 13
+  },
+  "metadata": {
+    "experiment_type": "chain_of_thought_vs_direct",
+    "model": "gpt-3.5-turbo",
+    "timestamp": 1773221582.759059,
+    "problems_tested": 13,
+    "hypothesis_confirmed": "True"
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "experiment_config": {
+    "n_tasks": 10,
+    "n_conditions": 4,
+    "total_queries": 40
+  },
+  "raw_results": [
+    {
+      "task_id": 0,
+      "task_type": "word_limit",
+      "condition": "baseline",
+      "prompt": "Explain photosynthesis in 25 words.",
+      "response": "Photosynthesis is the process by which plants convert sunlight, carbon dioxide, and water into glucose and oxygen, using chlorophyll in their cells.",
+      "constraint_met": true,
+      "constraint_value": "25"
+    },
+    {
+      "task_id": 0,
+      "task_type": "word_limit",
+      "condition": "exactly",
+      "prompt": "Explain exactly photosynthesis in exactly 25 words.",
+      "response": "Photosynthesis is the process by which plants convert sunlight, carbon dioxide, and water into glucose and oxygen, using chlorophyll in their cells.",
+      "constraint_met": true,
+      "constraint_value": "25"
+    },
+    {
+      "task_id": 0,
+      "task_type": "word_limit",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Explain photosynthesis in 25 words.",
+      "response": "Photosynthesis is the process by which plants convert sunlight, water, and carbon dioxide into glucose and oxygen, using chlorophyll in their cells.",
+      "constraint_met": true,
+      "constraint_value": "25"
+    },
+    {
+      "task_id": 0,
+      "task_type": "word_limit",
+      "condition": "precisely",
+      "prompt": "Explain precisely photosynthesis in precisely 25 words.",
+      "response": "Photosynthesis is the process by which plants convert sunlight, carbon dioxide, and water into glucose and oxygen, using chlorophyll in their cells.",
+      "constraint_met": true,
+      "constraint_value": "25"
+    },
+    {
+      "task_id": 1,
+      "task_type": "number_range",
+      "condition": "baseline",
+      "prompt": "Pick a random number between 200 and 300.",
+      "response": "234",
+      "constraint_met": true,
+      "constraint_value": "(200, 300)"
+    },
+    {
+      "task_id": 1,
+      "task_type": "number_range",
+      "condition": "exactly",
+      "prompt": "Pick a random number between 200 and 300.",
+      "response": "243",
+      "constraint_met": true,
+      "constraint_value": "(200, 300)"
+    },
+    {
+      "task_id": 1,
+      "task_type": "number_range",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Pick a random number between 200 and 300.",
+      "response": "256",
+      "constraint_met": true,
+      "constraint_value": "(200, 300)"
+    },
+    {
+      "task_id": 1,
+      "task_type": "number_range",
+      "condition": "precisely",
+      "prompt": "Pick a random number between 200 and 300.",
+      "response": "247",
+      "constraint_met": true,
+      "constraint_value": "(200, 300)"
+    },
+    {
+      "task_id": 2,
+      "task_type": "number_range",
+      "condition": "baseline",
+      "prompt": "Pick a random number between 1 and 10.",
+      "response": "7",
+      "constraint_met": true,
+      "constraint_value": "(1, 10)"
+    },
+    {
+      "task_id": 2,
+      "task_type": "number_range",
+      "condition": "exactly",
+      "prompt": "Pick a random number between 1 and 10.",
+      "response": "7",
+      "constraint_met": true,
+      "constraint_value": "(1, 10)"
+    },
+    {
+      "task_id": 2,
+      "task_type": "number_range",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Pick a random number between 1 and 10.",
+      "response": "7",
+      "constraint_met": true,
+      "constraint_value": "(1, 10)"
+    },
+    {
+      "task_id": 2,
+      "task_type": "number_range",
+      "condition": "precisely",
+      "prompt": "Pick a random number between 1 and 10.",
+      "response": "7",
+      "constraint_met": true,
+      "constraint_value": "(1, 10)"
+    },
+    {
+      "task_id": 3,
+      "task_type": "word_limit",
+      "condition": "baseline",
+      "prompt": "Explain photosynthesis in 50 words.",
+      "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight, carbon dioxide, and water into glucose and oxygen. This process occurs in the chloroplasts of plant cells and is essential for the production of food and oxygen in the ecosystem.",
+      "constraint_met": true,
+      "constraint_value": "50"
+    },
+    {
+      "task_id": 3,
+      "task_type": "word_limit",
+      "condition": "exactly",
+      "prompt": "Explain exactly photosynthesis in exactly 50 words.",
+      "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight, carbon dioxide, and water into glucose and oxygen. Chlorophyll in the chloroplasts of cells captures sunlight energy, which is used to power the chemical reactions that produce glucose, a form of stored energy for the organism.",
+      "constraint_met": true,
+      "constraint_value": "50"
+    },
+    {
+      "task_id": 3,
+      "task_type": "word_limit",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Explain photosynthesis in 50 words.",
+      "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight, carbon dioxide, and water into glucose and oxygen. This process occurs in the chloroplasts of plant cells and is essential for the production of food and oxygen in the ecosystem.",
+      "constraint_met": true,
+      "constraint_value": "50"
+    },
+    {
+      "task_id": 3,
+      "task_type": "word_limit",
+      "condition": "precisely",
+      "prompt": "Explain precisely photosynthesis in precisely 50 words.",
+      "response": "Photosynthesis is the process by which plants, algae, and some bacteria convert sunlight, carbon dioxide, and water into glucose and oxygen. This process occurs in chloroplasts, where chlorophyll absorbs sunlight to drive the chemical reactions that produce energy-rich molecules for the organism's growth and survival.",
+      "constraint_met": true,
+      "constraint_value": "50"
+    },
+    {
+      "task_id": 4,
+      "task_type": "list_length",
+      "condition": "baseline",
+      "prompt": "List 3 benefits of exercise.",
+      "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and boost overall physical fitness.\n2. Mental health benefits: Exercise has been shown to reduce symptoms of anxiety and depression, improve mood, and increase feelings of well-being.\n3. Weight management: Regular physical activity can help with weight loss and weight maintenance by burning calories and increasing metabolism.",
+      "constraint_met": true,
+      "constraint_value": "3"
+    },
+    {
+      "task_id": 4,
+      "task_type": "list_length",
+      "condition": "exactly",
+      "prompt": "List exactly 3 benefits of exercise.",
+      "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and boost immune function. It can also help reduce the risk of chronic diseases such as heart disease, diabetes, and obesity.\n\n2. Mental health benefits: Exercise has been shown to have a positive impact on mental health by reducing symptoms of anxiety and depression, improving mood, and enhancing cognitive function. It can also help reduce stress and improve sleep quality.\n\n3. Increased energy levels: Engaging in regular physical activity can help increase energy levels and combat feelings of fatigue. Exercise can also improve overall stamina and endurance, making daily tasks easier to accomplish.",
+      "constraint_met": true,
+      "constraint_value": "3"
+    },
+    {
+      "task_id": 4,
+      "task_type": "list_length",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. List 3 benefits of exercise.",
+      "response": "1. Improved cardiovascular health\n2. Weight management\n3. Increased energy levels",
+      "constraint_met": true,
+      "constraint_value": "3"
+    },
+    {
+      "task_id": 4,
+      "task_type": "list_length",
+      "condition": "precisely",
+      "prompt": "List precisely 3 benefits of exercise.",
+      "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and boost the immune system, reducing the risk of chronic diseases such as heart disease, diabetes, and obesity.\n\n2. Mental well-being: Exercise has been shown to release endorphins, which are chemicals in the brain that act as natural painkillers and mood elevators. Regular physical activity can help reduce symptoms of anxiety, depression, and stress, and improve overall mental health and cognitive function.\n\n3. Increased energy and stamina: Engaging in regular exercise can help improve overall energy levels and endurance, making daily tasks easier to accomplish and increasing productivity throughout the day. Regular physical activity can also improve sleep quality, leading to better rest and increased energy levels",
+      "constraint_met": true,
+      "constraint_value": "3"
+    },
+    {
+      "task_id": 5,
+      "task_type": "word_limit",
+      "condition": "baseline",
+      "prompt": "Explain photosynthesis in 10 words.",
+      "response": "Process by which plants convert sunlight into energy and oxygen.",
+      "constraint_met": true,
+      "constraint_value": "10"
+    },
+    {
+      "task_id": 5,
+      "task_type": "word_limit",
+      "condition": "exactly",
+      "prompt": "Explain exactly photosynthesis in exactly 10 words.",
+      "response": "Process by which plants convert sunlight into energy and oxygen.",
+      "constraint_met": true,
+      "constraint_value": "10"
+    },
+    {
+      "task_id": 5,
+      "task_type": "word_limit",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Explain photosynthesis in 10 words.",
+      "response": "Process by which plants convert sunlight into energy for growth.",
+      "constraint_met": true,
+      "constraint_value": "10"
+    },
+    {
+      "task_id": 5,
+      "task_type": "word_limit",
+      "condition": "precisely",
+      "prompt": "Explain precisely photosynthesis in precisely 10 words.",
+      "response": "Process by which plants convert sunlight into energy and oxygen.",
+      "constraint_met": true,
+      "constraint_value": "10"
+    },
+    {
+      "task_id": 6,
+      "task_type": "bullet_format",
+      "condition": "baseline",
+      "prompt": "List 4 programming languages using bullet points.",
+      "response": "- Python\n- Java\n- C++\n- JavaScript",
+      "constraint_met": true,
+      "constraint_value": "bullet_points"
+    },
+    {
+      "task_id": 6,
+      "task_type": "bullet_format",
+      "condition": "exactly",
+      "prompt": "List exactly 4 programming languages using bullet points.",
+      "response": "- Python\n- Java\n- C++\n- JavaScript",
+      "constraint_met": true,
+      "constraint_value": "bullet_points"
+    },
+    {
+      "task_id": 6,
+      "task_type": "bullet_format",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. List 4 programming languages using bullet points.",
+      "response": "- Python\n- Java\n- C++\n- JavaScript",
+      "constraint_met": true,
+      "constraint_value": "bullet_points"
+    },
+    {
+      "task_id": 6,
+      "task_type": "bullet_format",
+      "condition": "precisely",
+      "prompt": "List precisely 4 programming languages using bullet points.",
+      "response": "- Python\n- Java\n- C++\n- JavaScript",
+      "constraint_met": true,
+      "constraint_value": "bullet_points"
+    },
+    {
+      "task_id": 7,
+      "task_type": "number_range",
+      "condition": "baseline",
+      "prompt": "Pick a random number between 50 and 100.",
+      "response": "73",
+      "constraint_met": true,
+      "constraint_value": "(50, 100)"
+    },
+    {
+      "task_id": 7,
+      "task_type": "number_range",
+      "condition": "exactly",
+      "prompt": "Pick a random number between 50 and 100.",
+      "response": "73",
+      "constraint_met": true,
+      "constraint_value": "(50, 100)"
+    },
+    {
+      "task_id": 7,
+      "task_type": "number_range",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. Pick a random number between 50 and 100.",
+      "response": "78",
+      "constraint_met": true,
+      "constraint_value": "(50, 100)"
+    },
+    {
+      "task_id": 7,
+      "task_type": "number_range",
+      "condition": "precisely",
+      "prompt": "Pick a random number between 50 and 100.",
+      "response": "73",
+      "constraint_met": true,
+      "constraint_value": "(50, 100)"
+    },
+    {
+      "task_id": 8,
+      "task_type": "list_length",
+      "condition": "baseline",
+      "prompt": "List 5 benefits of exercise.",
+      "response": "1. Improved physical health: Regular exercise can help improve cardiovascular health, strengthen muscles and bones, and boost the immune system.\n\n2. Mental health benefits: Exercise has been shown to reduce symptoms of anxiety and depression, improve mood, and increase overall feelings of well-being.\n\n3. Weight management: Regular physical activity can help with weight loss and weight maintenance by burning calories and increasing metabolism.\n\n4. Increased energy levels: Exercise can help boost energy levels and combat feelings of fatigue, leading to increased productivity and overall vitality.\n\n5. Better sleep: Regular exercise has been linked to improved sleep quality and can help regulate sleep patterns, leading to a more restful night's sleep.",
+      "constraint_met": true,
+      "constraint_value": "5"
+    },
+    {
+      "task_id": 8,
+      "task_type": "list_length",
+      "condition": "exactly",
+      "prompt": "List exactly 5 benefits of exercise.",
+      "response": "1. Improved cardiovascular health: Regular exercise can help strengthen the heart, improve circulation, and lower blood pressure, reducing the risk of heart disease and stroke.\n\n2. Weight management: Exercise helps burn calories and build muscle, making it easier to maintain a healthy weight and reduce the risk of obesity.\n\n3. Increased energy levels: Physical activity releases endorphins, which can boost mood and energy levels, helping to combat feelings of fatigue and improve overall well-being.\n\n4. Better mental health: Exercise has been shown to reduce symptoms of anxiety, depression, and stress, as well as improve cognitive function and memory.\n\n5. Stronger bones and muscles: Regular exercise can help build and maintain strong bones and muscles, reducing the risk of osteoporosis and",
+      "constraint_met": true,
+      "constraint_value": "5"
+    },
+    {
+      "task_id": 8,
+      "task_type": "list_length",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. List 5 benefits of exercise.",
+      "response": "1. Improved cardiovascular health\n2. Weight management\n3. Increased muscle strength and endurance\n4. Improved mood and mental health\n5. Reduced risk of chronic diseases such as diabetes and hypertension",
+      "constraint_met": true,
+      "constraint_value": "5"
+    },
+    {
+      "task_id": 8,
+      "task_type": "list_length",
+      "condition": "precisely",
+      "prompt": "List precisely 5 benefits of exercise.",
+      "response": "1. Improved physical health: Regular exercise can help reduce the risk of chronic diseases such as heart disease, diabetes, and obesity. It also strengthens muscles and bones, improves cardiovascular health, and boosts the immune system.\n\n2. Better mental health: Exercise has been shown to reduce symptoms of anxiety, depression, and stress. It can also improve mood, increase self-esteem, and enhance cognitive function.\n\n3. Weight management: Regular physical activity can help with weight loss or maintenance by burning calories and increasing metabolism. It also helps build muscle mass, which can further aid in weight management.\n\n4. Increased energy levels: Exercise can boost energy levels and combat feelings of fatigue. It improves circulation and oxygen flow to the muscles, which can help increase stamina and endurance",
+      "constraint_met": false,
+      "constraint_value": "5"
+    },
+    {
+      "task_id": 9,
+      "task_type": "list_length",
+      "condition": "baseline",
+      "prompt": "List 7 benefits of exercise.",
+      "response": "1. Improved cardiovascular health: Regular exercise can help strengthen the heart and improve circulation, reducing the risk of heart disease and other cardiovascular conditions.\n\n2. Weight management: Exercise helps to burn calories and build muscle, which can aid in weight loss or maintenance.\n\n3. Increased energy levels: Physical activity can boost energy levels and improve overall feelings of well-being.\n\n4. Better mental health: Exercise has been shown to reduce symptoms of anxiety and depression, and can improve mood and cognitive function.\n\n5. Stronger bones and muscles: Regular exercise can help build and maintain strong bones and muscles, reducing the risk of osteoporosis and other musculoskeletal conditions.\n\n6. Improved sleep: Exercise can help regulate sleep patterns and improve the quality of sleep, leading",
+      "constraint_met": false,
+      "constraint_value": "7"
+    },
+    {
+      "task_id": 9,
+      "task_type": "list_length",
+      "condition": "exactly",
+      "prompt": "List exactly 7 benefits of exercise.",
+      "response": "1. Improved cardiovascular health\n2. Increased muscle strength and endurance\n3. Weight management and improved body composition\n4. Enhanced mood and mental well-being\n5. Reduced risk of chronic diseases such as diabetes and hypertension\n6. Improved sleep quality\n7. Increased energy levels and overall sense of well-being",
+      "constraint_met": true,
+      "constraint_value": "7"
+    },
+    {
+      "task_id": 9,
+      "task_type": "list_length",
+      "condition": "only",
+      "prompt": "Please provide only what is requested. List 7 benefits of exercise.",
+      "response": "1. Improved cardiovascular health\n2. Weight management\n3. Increased muscle strength and endurance\n4. Improved mental health and mood\n5. Reduced risk of chronic diseases\n6. Better sleep quality\n7. Increased energy levels",
+      "constraint_met": true,
+      "constraint_value": "7"
+    },
+    {
+      "task_id": 9,
+      "task_type": "list_length",
+      "condition": "precisely",
+      "prompt": "List precisely 7 benefits of exercise.",
+      "response": "1. Improved cardiovascular health\n2. Increased muscle strength and endurance\n3. Weight management and improved body composition\n4. Enhanced mood and mental well-being\n5. Reduced risk of chronic diseases such as diabetes and cancer\n6. Better sleep quality\n7. Increased energy levels and overall sense of well-being",
+      "constraint_met": true,
+      "constraint_value": "7"
+    }
+  ],
+  "summary_stats": {
+    "baseline": {
+      "adherence_rate": 0.9,
+      "n_samples": 10,
+      "n_successful": 9
+    },
+    "exactly": {
+      "adherence_rate": 1.0,
+      "n_samples": 10,
+      "n_successful": 10
+    },
+    "only": {
+      "adherence_rate": 1.0,
+      "n_samples": 10,
+      "n_successful": 10
+    },
+    "precisely": {
+      "adherence_rate": 0.9,
+      "n_samples": 10,
+      "n_successful": 9
+    }
+  },
+  "metadata": {
+    "experiment_duration_seconds": 60.026670932769775,
+    "total_api_calls": 40,
+    "hypothesis": "Adding specific constraint keywords improves LLM adherence to constraints",
+    "success_threshold_met": false
+  }
+}

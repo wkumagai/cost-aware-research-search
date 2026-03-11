@@ -1,0 +1,22 @@
+{
+  "experiment": "embedding_study",
+  "hypothesis": "CoT prompting shows different embedding patterns with tighter clustering",
+  "timestamp": "2026-03-11T18:39:11.671878",
+  "error": null,
+  "success": false,
+  "direct_metrics": {
+    "similarity_variance": 0.010698922909796238,
+    "mean_similarity": 0.2914755642414093,
+    "cluster_inertia": 14.551783561706543,
+    "n_samples": 25
+  },
+  "cot_metrics": {
+    "similarity_variance": 0.010543379932641983,
+    "mean_similarity": 0.3179527223110199,
+    "cluster_inertia": 14.087560653686523,
+    "n_samples": 25
+  },
+  "variance_reduction_percent": 1.45381902894015,
+  "success_threshold": 20.0,
+  "n_problems": 25
+}

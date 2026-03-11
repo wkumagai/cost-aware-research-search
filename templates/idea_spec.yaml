@@ -1,0 +1,21 @@
+# Typed Idea Spec Template
+# All fields are required for a candidate to be valid.
+
+hypothesis: ""          # What do you expect to find? (1-2 sentences)
+intervention_family: "" # Category: prompt_engineering | data_analysis | embedding_study | model_behavior
+target_component: ""    # What specific thing is being tested
+implementation_scope:   # What code needs to be written
+  lines_estimate: 0     # Estimated lines of code
+  dependencies: []      # Required pip packages (must be installable)
+  compute: "cpu"        # cpu | gpu
+  time_estimate_min: 0  # Estimated runtime in minutes
+proxy_evaluation:
+  metric: ""            # Primary metric name
+  baseline: ""          # What to compare against
+  success_threshold: "" # What counts as a positive result
+full_evaluation:
+  dataset: ""           # Dataset or data source
+  n_samples: 0          # Number of data points
+  n_conditions: 0       # Number of experimental conditions
+expected_failure_modes: []  # List of things that could go wrong
+rollback_plan: ""       # What to do if it fails
