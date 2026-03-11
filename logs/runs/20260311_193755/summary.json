@@ -1,0 +1,60 @@
+{
+  "run_id": "20260311_193755",
+  "scores": [
+    2,
+    5,
+    5,
+    2
+  ],
+  "final_idea_spec": "hypothesis: \"LLM-generated text exhibits systematically different variance and skewness in linguistic feature distributions compared to human text, with specific directional predictions: LLMs show reduced sentence length variance, reduced word length skewness, but potentially increased punctuation clustering.\"\nintervention_family: \"directional_distributional_analysis\"\ntarget_component: \"document_level_linguistic_statistics\"\nimplementation_scope:\n  lines_estimate: 180\n  dependencies: [\"re\", \"statistics\", \"scipy\", \"numpy\", \"pandas\", \"matplotlib\", \"requests\", \"json\"]\n  compute: \"cpu\"\n  time_estimate_min: 9\nproxy_evaluation:\n  metric: \"directional_variance_skewness_comparison\"\n  baseline: \"multi_corpus_human_text\"\n  success_threshold: \"effect_size > 0.3 for 2+ features with 95% CI excluding zero\"\nfull_evaluation:\n  dataset: \"OpenAI GPT responses vs multi-corpus human samples with document-level aggregation\"\n  n_samples: 60\n  n_conditions: 2\n  api_calls: 30\n  human_corpora: [\"gutenberg_excerpts\", \"wikipedia_articles\", \"news_articles\"]\n  features: [\"sentence_length_variance_per_doc\", \"word_length_skewness_per_doc\", \"punctuation_clustering_coefficient\"]\n  statistical_tests: [\"welch_t_test\", \"bootstrap_effect_size\", \"permutation_test\"]\n  multiple_testing_correction: \"holm\"\n  bootstrap_iterations: 500\n  confidence_intervals: true\nexpected_failure_modes: [\"API rate limiting\", \"corpus access issues\", \"insufficient document length\"]\nrollback_plan: \"use pre-cached responses, implement exponential backoff for API calls, filter documents by minimum 100 words, use robust statistics for outlier documents\"\ndocument_strategy:\n  min_words_per_doc: 100\n  max_words_per_doc: 500\n  topics: [\"technology\", \"environment\", \"education\", \"health\", \"culture\"]\n  samples_per_topic: 6\n  analysis_unit: \"per_document_summary_statistics\"\nrobustness_checks:\n  - \"length_normalized_analysis\"\n  - \"topic_stratified_bootstrap\"\n  - \"outlier_sensitivity_analysis\"\n  - \"cross_corpus_validation\"\ndirectional_predictions:\n  sentence_variance: \"llm < human\"\n  word_skewness: \"llm < human\" \n  punctuation_clustering: \"llm > human\"\neffect_size_reporting:\n  primary_metric: \"cohens_d_with_ci\"\n  secondary_metrics: [\"hedge_g\", \"common_language_effect_size\"]\n  uncertainty_quantification: \"bootstrap_percentile_method\"",
+  "final_judgment": {
+    "novelty": {
+      "score": 3,
+      "reason": "failed"
+    },
+    "rigor": {
+      "score": 1,
+      "reason": "failed"
+    },
+    "significance": {
+      "score": 3,
+      "reason": "failed"
+    },
+    "completeness": {
+      "score": 1,
+      "reason": "failed"
+    },
+    "overall": {
+      "score": 2,
+      "reason": "Experiment failed to execute"
+    },
+    "key_finding": "Experiment failed to execute.",
+    "improvement_suggestions": [
+      "Simplify experiment",
+      "Fewer API calls",
+      "Better error handling"
+    ]
+  },
+  "score_progression": [
+    {
+      "iteration": 1,
+      "score": 2,
+      "key_finding": "Experiment failed to execute."
+    },
+    {
+      "iteration": 2,
+      "score": 5,
+      "key_finding": "In this sample, LLM text differed strongly from human text on average word length and especially average sentence length (large effect sizes), while punctuation density showed little difference; however, the evidence does not consistently support the stronger claim that LLM text is generally more uniform."
+    },
+    {
+      "iteration": 3,
+      "score": 5,
+      "key_finding": "LLM and human texts differ significantly in the distributions of word length, sentence length, and punctuation density, with especially large distances for word and sentence lengths; however, the reported direction does not cleanly support the original claim that LLM text has reduced variance and skewness, since LLM sentence-length variance and word-length skewness were higher than human text."
+    },
+    {
+      "iteration": 4,
+      "score": 2,
+      "key_finding": "Experiment failed to execute."
+    }
+  ]
+}

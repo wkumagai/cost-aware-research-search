@@ -1,23 +1,269 @@
 {
-  "experiment_type": "embedding_study",
-  "hypothesis": "Chain-of-thought prompting will show measurably different semantic clustering patterns",
-  "timestamp": 1773222147.726816,
-  "success": true,
-  "error": null,
-  "n_problems": 15,
-  "direct_clustering": {
-    "silhouette_score": 0.08073686808347702,
-    "n_clusters": 7,
-    "condition": "Direct",
-    "n_samples": 15
+  "experiment_info": {
+    "total_samples": 55,
+    "human_samples": 30,
+    "llm_samples": 25,
+    "api_calls_made": 25,
+    "topics_used": 28
   },
-  "cot_clustering": {
-    "silhouette_score": 0.12430653721094131,
-    "n_clusters": 7,
-    "condition": "Chain-of-Thought",
-    "n_samples": 15
+  "statistical_tests": {
+    "avg_sentence_length": {
+      "ks_statistic": 1.0,
+      "ks_p_value": 6.481194254049317e-16,
+      "mw_statistic": 0.0,
+      "mw_p_value": 2.3296415877146945e-10,
+      "cohens_d": -3.6382282731535764,
+      "human_mean": 12.24,
+      "human_std": 3.0700030160438803,
+      "llm_mean": 21.721615959204197,
+      "llm_std": 2.0392841216069777,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "sentence_length_std": {
+      "ks_statistic": 0.72,
+      "ks_p_value": 2.2824509151674656e-07,
+      "mw_statistic": 69.0,
+      "mw_p_value": 2.3414722356801246e-07,
+      "cohens_d": -1.86185165784081,
+      "human_mean": 3.7068632804779917,
+      "human_std": 1.5183988244905575,
+      "llm_mean": 6.331711195736793,
+      "llm_std": 1.2921167540765581,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "sentence_length_variance": {
+      "ks_statistic": 0.72,
+      "ks_p_value": 2.2824509151674656e-07,
+      "mw_statistic": 69.0,
+      "mw_p_value": 2.3414722356801246e-07,
+      "cohens_d": -1.881209909103233,
+      "human_mean": 16.046370370370372,
+      "human_std": 10.209223220203636,
+      "llm_mean": 41.760132372383985,
+      "llm_std": 16.41464164590782,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "punctuation_density": {
+      "ks_statistic": 0.25333333333333335,
+      "ks_p_value": 0.2941958853656621,
+      "mw_statistic": 365.0,
+      "mw_p_value": 0.8724224714005077,
+      "cohens_d": 0.03832911750936396,
+      "human_mean": 0.019964365362466634,
+      "human_std": 0.003017363493845109,
+      "llm_mean": 0.019856697025712272,
+      "llm_std": 0.002583993150197314,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "avg_word_length": {
+      "ks_statistic": 0.7533333333333333,
+      "ks_p_value": 4.218753287285082e-08,
+      "mw_statistic": 708.0,
+      "mw_p_value": 1.9054101691687732e-08,
+      "cohens_d": 2.1215775324864556,
+      "human_mean": 6.557578173086832,
+      "human_std": 0.1774430621454493,
+      "llm_mean": 6.015485786301106,
+      "llm_std": 0.3147833977626234,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "word_length_std": {
+      "ks_statistic": 0.3333333333333333,
+      "ks_p_value": 0.07589608911163262,
+      "mw_statistic": 400.0,
+      "mw_p_value": 0.6787821365043434,
+      "cohens_d": 0.42110802315709733,
+      "human_mean": 3.3977154797319256,
+      "human_std": 0.386013763018065,
+      "llm_mean": 3.2687869767901585,
+      "llm_std": 0.19613079186316312,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "commas_per_100_words": {
+      "ks_statistic": 0.88,
+      "ks_p_value": 1.700341312549838e-11,
+      "mw_statistic": 40.0,
+      "mw_p_value": 1.5073682423947545e-08,
+      "cohens_d": -2.2093586859456225,
+      "human_mean": 5.274946625629991,
+      "human_std": 1.2837678173919194,
+      "llm_mean": 8.788037231952922,
+      "llm_std": 1.8462788466525601,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    },
+    "complex_punct_ratio": {
+      "ks_statistic": 0.3333333333333333,
+      "ks_p_value": 0.07589608911163262,
+      "mw_statistic": 370.0,
+      "mw_p_value": 0.9323374839705558,
+      "cohens_d": 0.5060807667390488,
+      "human_mean": 0.40379066166076943,
+      "human_std": 0.5713005479234795,
+      "llm_mean": 0.1872976871249704,
+      "llm_std": 0.1990302437168197,
+      "sample_sizes": {
+        "human": 30,
+        "llm": 25
+      }
+    }
   },
-  "silhouette_difference": 0.043569669127464294,
-  "success_threshold": 0.05,
-  "hypothesis_supported": false
+  "bootstrap_confidence_intervals": {
+    "avg_sentence_length": {
+      "human_ci": {
+        "lower": 11.243333333333334,
+        "upper": 13.451361111111112
+      },
+      "llm_ci": {
+        "lower": 20.96922940188896,
+        "upper": 22.527266662177688
+      }
+    },
+    "sentence_length_std": {
+      "human_ci": {
+        "lower": 3.213364538595352,
+        "upper": 4.248928111521271
+      },
+      "llm_ci": {
+        "lower": 5.801101537531055,
+        "upper": 6.836439522331185
+      }
+    },
+    "sentence_length_variance": {
+      "human_ci": {
+        "lower": 12.136759259259263,
+        "upper": 19.76177962962963
+      },
+      "llm_ci": {
+        "lower": 35.44392330830239,
+        "upper": 47.73998879655827
+      }
+    },
+    "punctuation_density": {
+      "human_ci": {
+        "lower": 0.01883746224735549,
+        "upper": 0.021122717175613467
+      },
+      "llm_ci": {
+        "lower": 0.01891701734220909,
+        "upper": 0.0208374690896248
+      }
+    },
+    "avg_word_length": {
+      "human_ci": {
+        "lower": 6.494162420170212,
+        "upper": 6.62525462719376
+      },
+      "llm_ci": {
+        "lower": 5.889874688352042,
+        "upper": 6.124065458157675
+      }
+    },
+    "word_length_std": {
+      "human_ci": {
+        "lower": 3.263614747386096,
+        "upper": 3.5390181188066747
+      },
+      "llm_ci": {
+        "lower": 3.1901199910269376,
+        "upper": 3.346785306185588
+      }
+    },
+    "commas_per_100_words": {
+      "human_ci": {
+        "lower": 4.80943738746525,
+        "upper": 5.696223378665727
+      },
+      "llm_ci": {
+        "lower": 8.103941277688994,
+        "upper": 9.52798628751288
+      }
+    },
+    "complex_punct_ratio": {
+      "human_ci": {
+        "lower": 0.2023809523809524,
+        "upper": 0.6092630763309294
+      },
+      "llm_ci": {
+        "lower": 0.11315986791302313,
+        "upper": 0.2649213716579526
+      }
+    }
+  },
+  "clustering_analysis": {
+    "sentence_transformer": {
+      "adjusted_rand_index": -0.006097560975609756,
+      "davies_bouldin_score": 2.383110382602476,
+      "classification_accuracy": 0.9272727272727274,
+      "classification_std": 0.036363636363636376
+    },
+    "tfidf": {
+      "adjusted_rand_index": 0.06097560975609756,
+      "davies_bouldin_score": 1.8671419813822603,
+      "classification_accuracy": 1.0,
+      "classification_std": 0.0
+    }
+  },
+  "summary_statistics": {
+    "avg_sentence_length": {
+      "significant_difference": true,
+      "effect_size_category": "large",
+      "ks_statistic": 1.0
+    },
+    "sentence_length_std": {
+      "significant_difference": true,
+      "effect_size_category": "large",
+      "ks_statistic": 0.72
+    },
+    "sentence_length_variance": {
+      "significant_difference": true,
+      "effect_size_category": "large",
+      "ks_statistic": 0.72
+    },
+    "punctuation_density": {
+      "significant_difference": false,
+      "effect_size_category": "small",
+      "ks_statistic": 0.25333333333333335
+    },
+    "avg_word_length": {
+      "significant_difference": true,
+      "effect_size_category": "large",
+      "ks_statistic": 0.7533333333333333
+    },
+    "word_length_std": {
+      "significant_difference": false,
+      "effect_size_category": "small",
+      "ks_statistic": 0.3333333333333333
+    },
+    "commas_per_100_words": {
+      "significant_difference": true,
+      "effect_size_category": "large",
+      "ks_statistic": 0.88
+    },
+    "complex_punct_ratio": {
+      "significant_difference": false,
+      "effect_size_category": "medium",
+      "ks_statistic": 0.3333333333333333
+    }
+  }
 }

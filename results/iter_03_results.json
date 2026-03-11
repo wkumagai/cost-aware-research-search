@@ -1,7 +1,1966 @@
 {
-  "experiment_type": "chain_of_thought_prompting",
-  "timestamp": 1773222612.304306,
-  "duration_seconds": 44.088496923446655,
-  "error": "Object of type bool is not JSON serializable",
-  "status": "failed"
+  "experiment_metadata": {
+    "total_samples": 30,
+    "hypothesis": "LLMs will show consistent patterns in their reasoning errors when solving multi-step logical problems",
+    "conditions_tested": 4,
+    "min_sample_size_met": false
+  },
+  "results": [
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate Q AND P\nStep 2: Calculate Q OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "Q OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND P\nQ = False, P = True\nFalse AND True = False\n\nStep 2: Calculate Q OR S\nSince S is not given, we cannot directly calculate Q OR S. Therefore, the final result of Step 2 is undefined.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 1
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = True, R = True\nStep 1: Calculate R AND Q\nStep 2: Calculate P OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": true,
+          "R": true,
+          "S": true,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "R AND Q",
+            "operator": "AND",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "P OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: R AND Q\nSince R = True and Q = True, R AND Q = True AND True = True\n\nStep 2: P OR S\nSince P = True, we need to determine the value of S to calculate P OR S. However, the value of S is not given in the initial information provided. Therefore, we cannot determine the final result of Step 2 without knowing the value of S.\n\nFinal Result: Cannot be determined without the value of S.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 2
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = False\nStep 1: Calculate R AND Q\nStep 2: Calculate S OR Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": false,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "R AND Q",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "S OR Q",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1:\nR AND Q = False AND False\nR AND Q = False\n\nStep 2:\nS OR Q = True OR False\nS OR Q = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 3
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = False\nStep 1: Calculate P AND Q\nStep 2: Calculate R OR Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": false,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "P AND Q",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR Q",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: P AND Q\nFalse AND False = False\n\nStep 2: R OR Q\nFalse OR False = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 4
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = False\nStep 1: Calculate Q AND R\nStep 2: Calculate Q OR P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": false,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND R",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "Q OR P",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND R\nFalse AND False = False\n\nStep 2: Q OR P\nFalse OR True = True\n\nFinal result of Step 2: True",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 5
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = False\nStep 1: Calculate R AND P\nStep 2: Calculate R OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": false,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "R AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1:\nR AND P = False AND False\nR AND P = False\n\nStep 2:\nSince S is not given, we cannot directly calculate R OR S. However, we can simplify the expression:\nR OR S = False OR S\nSince the value of S is not given, we cannot determine the final result of R OR S.\n\nTherefore, the final result of Step 2 is indeterminate.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 6
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = True\nStep 1: Calculate Q AND P\nStep 2: Calculate R OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": true,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND P\nQ = True, P = False\nTrue AND False = False\n\nStep 2: R OR S\nR = True\nWe do not have the value of S, so we cannot calculate R OR S.\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 7
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = True\nStep 1: Calculate Q AND P\nStep 2: Calculate S OR R\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": true,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "S OR R",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND P\nQ = True, P = False\nTrue AND False = False\n\nStep 2: S OR R\nSince S is not given, we cannot calculate S OR R.\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 8
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate Q AND P\nStep 2: Calculate S OR P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "S OR P",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND P\nFalse AND False = False\n\nStep 2: S OR P\nSince S is not given, we cannot calculate S OR P.\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 9
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate P AND Q\nStep 2: Calculate R OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "P AND Q",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: P AND Q\nP = True, Q = False\nP AND Q = True AND False = False\n\nStep 2: Calculate R OR S\nR = True\nWe do not have the value of S, so we cannot calculate R OR S.\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 10
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = True, R = False\nStep 1: Calculate R AND Q\nStep 2: Calculate P OR Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": true,
+          "R": false,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "R AND Q",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "P OR Q",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: R AND Q\nFalse AND True = False\n\nStep 2: P OR Q\nTrue OR True = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 11
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = False\nStep 1: Calculate P AND R\nStep 2: Calculate R OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": false,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "P AND R",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1:\nP AND R = False AND False = False\n\nStep 2:\nSince we do not have the value of S, we cannot directly calculate R OR S. The final result of Step 2 is indeterminate.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 12
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate P AND R\nStep 2: Calculate P OR S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "P AND R",
+            "operator": "AND",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "P OR S",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1:\nP AND R = True AND True\nP AND R = True\n\nStep 2:\nWe are given that Q = False, so S = NOT Q = NOT False = True\nP OR S = True OR True\nP OR S = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 13
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate Q AND P\nStep 2: Calculate R OR P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R OR P",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: Q AND P\nFalse AND False = False\n\nStep 2: R OR P\nTrue OR False = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 14
+    },
+    {
+      "condition_index": 0,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "AND",
+          "OR"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate P AND R\nStep 2: Calculate S OR Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "P AND R",
+            "operator": "AND",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "S OR Q",
+            "operator": "OR",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "AND",
+          "OR"
+        ]
+      },
+      "llm_response": "Step 1: P AND R\nP = True, R = True\nP AND R = True AND True = True\n\nStep 2: Calculate S OR Q\nSince S is not given, we cannot calculate S OR Q.\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "AND",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "OR",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 15
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = True, R = True\nStep 1: Calculate NOT R\nStep 2: Calculate Q AND P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": true,
+          "R": true,
+          "S": false,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "Q AND P",
+            "operator": "AND",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT True\nNOT R = False\n\nStep 2:\nQ AND P = True AND True\nQ AND P = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 16
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate NOT R\nStep 2: Calculate S AND Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "S AND Q",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT True\nNOT R = False\n\nStep 2:\nS AND Q = NOT P AND Q\nS AND Q = NOT False AND False\nS AND Q = True AND False\nS AND Q = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 17
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate NOT Q\nStep 2: Calculate R AND P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT Q",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "R AND P",
+            "operator": "AND",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT Q = NOT False\nNOT Q = True\n\nStep 2:\nR AND P = True AND True\nR AND P = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 18
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = False\nStep 1: Calculate NOT R\nStep 2: Calculate R AND S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": false,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "R AND S",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT False\nNOT R = True\n\nStep 2:\nR AND S = False AND S\nR AND S = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 19
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = True, R = False\nStep 1: Calculate NOT P\nStep 2: Calculate S AND R\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": true,
+          "R": false,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "S AND R",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT P = NOT True\nNOT P = False\n\nStep 2:\nS AND R = True AND False\nS AND R = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 20
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = False\nStep 1: Calculate NOT R\nStep 2: Calculate S AND Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": false,
+          "S": true,
+          "T": true
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "S AND Q",
+            "operator": "AND",
+            "position": 1,
+            "result": true
+          }
+        ],
+        "correct_answer": true,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT False\nNOT R = True\n\nStep 2:\nS AND Q = True AND True\nS AND Q = True\n\nTherefore, the final result of Step 2 is True.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": true
+          }
+        ]
+      },
+      "api_calls_used": 21
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = False\nStep 1: Calculate NOT P\nStep 2: Calculate R AND P\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": false,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "R AND P",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT P = NOT False\nNOT P = True\n\nStep 2:\nR AND P = False AND False\nR AND P = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 22
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate NOT P\nStep 2: Calculate Q AND S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "Q AND S",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT P = NOT False\nNOT P = True\n\nStep 2:\nSince S is not defined in the given information, we cannot calculate Q AND S. Therefore, the final result of Step 2 is undefined.\n\nFinal Result: Undefined",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 23
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate NOT Q\nStep 2: Calculate Q AND R\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT Q",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "Q AND R",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT Q = NOT False\nNOT Q = True\n\nStep 2:\nQ AND R = False AND True\nQ AND R = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 24
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = True\nStep 1: Calculate NOT P\nStep 2: Calculate P AND Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": true,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "P AND Q",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1: NOT P = NOT False = True\n\nStep 2: P AND Q = False AND True = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": []
+      },
+      "api_calls_used": 25
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate NOT R\nStep 2: Calculate R AND Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R AND Q",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT True\nNOT R = False\n\nStep 2:\nR AND Q = True AND False\nR AND Q = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 26
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = True, Q = False, R = True\nStep 1: Calculate NOT P\nStep 2: Calculate R AND Q\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": true,
+          "Q": false,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "R AND Q",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT P = NOT True\nNOT P = False\n\nStep 2:\nR AND Q = True AND False\nR AND Q = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 27
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = False\nStep 1: Calculate NOT R\nStep 2: Calculate P AND R\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": false,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "P AND R",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT False\nNOT R = True\n\nStep 2:\nP AND R = False AND False\nP AND R = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 28
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = False, R = True\nStep 1: Calculate NOT P\nStep 2: Calculate Q AND R\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": false,
+          "R": true,
+          "S": true,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT P",
+            "operator": "NOT",
+            "position": 0,
+            "result": true
+          },
+          {
+            "step": 2,
+            "expression": "Q AND R",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT P = NOT False\nNOT P = True\n\nStep 2:\nQ AND R = False AND True\nQ AND R = False\n\nTherefore, the final result of Step 2 is False.",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": true
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 29
+    },
+    {
+      "condition_index": 1,
+      "condition": {
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "problem_data": {
+        "problem": "Given: P = False, Q = True, R = True\nStep 1: Calculate NOT R\nStep 2: Calculate P AND S\nWhat is the final result of Step 2?",
+        "truth_values": {
+          "P": false,
+          "Q": true,
+          "R": true,
+          "S": false,
+          "T": false
+        },
+        "steps": [
+          {
+            "step": 1,
+            "expression": "NOT R",
+            "operator": "NOT",
+            "position": 0,
+            "result": false
+          },
+          {
+            "step": 2,
+            "expression": "P AND S",
+            "operator": "AND",
+            "position": 1,
+            "result": false
+          }
+        ],
+        "correct_answer": false,
+        "complexity": "simple",
+        "chain_length": 2,
+        "operators_used": [
+          "NOT",
+          "AND"
+        ]
+      },
+      "llm_response": "Step 1:\nNOT R = NOT True\nNOT True = False\n\nStep 2:\nP = False\nS = unknown\n\nP AND S = False AND S\n\nFinal result of Step 2: False",
+      "error_analysis": {
+        "parsing_failed": false,
+        "errors": [
+          {
+            "step": 1,
+            "operator": "NOT",
+            "position": 0,
+            "error_type": "incorrect_result",
+            "expected": false
+          },
+          {
+            "step": 2,
+            "operator": "AND",
+            "position": 1,
+            "error_type": "incorrect_result",
+            "expected": false
+          }
+        ]
+      },
+      "api_calls_used": 30
+    }
+  ],
+  "analysis": {
+    "operator_error_rates": {
+      "AND": 0.9666666666666667,
+      "OR": 1.0,
+      "NOT": 0.9333333333333333
+    },
+    "position_error_rates": {
+      "0": 0.9666666666666667,
+      "1": 0.9666666666666667,
+      "2": 0.0
+    },
+    "operator_chi2": 0.034482758620689655,
+    "operator_p_value": 0.9829064027289661,
+    "position_chi2": NaN,
+    "position_p_value": NaN,
+    "cramers_v_operator": 0.023973165074269207,
+    "cramers_v_position": NaN,
+    "total_errors": 58,
+    "total_steps": 60,
+    "error_pattern_consistency_score": 0.023973165074269207
+  }
 }

@@ -1,47 +1,19 @@
 {
-  "experiment": "semantic_clustering_domain_comparison",
-  "hypothesis": "Semantic clustering quality degrades with domain-specific jargon",
-  "conditions": {
-    "general": {
-      "domain": "general",
-      "n_samples": 10,
-      "silhouette_score": 0.03760068863630295,
-      "texts_sample": [
-        "The weather today is sunny with temperatures reaching 75 degrees Fahrenheit.",
-        "Cooking pasta requires boiling water and adding salt for flavor enhancement.",
-        "Many people enjoy reading books in their spare time for entertainment."
-      ]
-    },
-    "medical": {
-      "domain": "medical",
-      "n_samples": 15,
-      "silhouette_score": 0.032376524060964584,
-      "difference_percent": 13.893800259537015,
-      "texts_sample": [
-        "Myocardial infarction occurs when coronary artery occlusion leads to cardiomyocyte necrosis and subsequent ventricular dysfunction.",
-        "Pharmacokinetic properties of beta-lactam antibiotics demonstrate time-dependent bactericidal activity against gram-positive pathogens.",
-        "Hepatic cytochrome P450 enzymes metabolize xenobiotics through oxidative biotransformation pathways in hepatocytes."
-      ]
-    },
-    "legal": {
-      "domain": "legal",
-      "n_samples": 15,
-      "silhouette_score": 0.04844187572598457,
-      "difference_percent": -28.832416327648343,
-      "texts_sample": [
-        "The plaintiff's motion for summary judgment lacks sufficient evidence to establish prima facie liability under tort law.",
-        "Contractual obligations require consideration, mutual assent, and legal capacity to form binding agreements.",
-        "Statutory construction principles dictate that legislative intent governs judicial interpretation of ambiguous provisions."
-      ]
-    }
+  "experiment_info": {
+    "total_samples": 0,
+    "conditions": [
+      "direct",
+      "structured",
+      "explicit"
+    ],
+    "timestamp": 1773229508.857455,
+    "duration_seconds": 93.33558917045593
   },
-  "summary": {
-    "baseline_silhouette": 0.03760068863630295,
-    "medical_degradation_percent": 13.893800259537015,
-    "legal_degradation_percent": -28.832416327648343,
-    "average_degradation_percent": -7.469308034055664,
-    "hypothesis_supported": false,
-    "success_threshold_met": false
-  },
-  "success": false
+  "raw_results": [],
+  "analysis": {},
+  "hypothesis_test": {
+    "metric": "response_consistency_score",
+    "baseline": "direct_answer_prompts",
+    "success_threshold": "20% reduction in response variance"
+  }
 }

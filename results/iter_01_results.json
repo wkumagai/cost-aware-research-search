@@ -1,22 +1,50 @@
 {
-  "experiment": "embedding_study",
-  "hypothesis": "CoT prompting shows different embedding patterns with tighter clustering",
-  "timestamp": "2026-03-11T18:39:11.671878",
-  "error": null,
-  "success": false,
-  "direct_metrics": {
-    "similarity_variance": 0.010698922909796238,
-    "mean_similarity": 0.2914755642414093,
-    "cluster_inertia": 14.551783561706543,
-    "n_samples": 25
+  "experiment_info": {
+    "hypothesis": "Embeddings from different domains cluster differently in vector space",
+    "n_samples": 60,
+    "n_domains": 3,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dimension": 384
   },
-  "cot_metrics": {
-    "similarity_variance": 0.010543379932641983,
-    "mean_similarity": 0.3179527223110199,
-    "cluster_inertia": 14.087560653686523,
-    "n_samples": 25
+  "domain_distribution": {
+    "news": "20",
+    "scientific": "20",
+    "social_media": "20"
   },
-  "variance_reduction_percent": 1.45381902894015,
-  "success_threshold": 20.0,
-  "n_problems": 25
+  "clustering_metrics": {
+    "true_domain_silhouette": 0.012588446959853172,
+    "random_domain_silhouette": -0.012876800261437893,
+    "kmeans_silhouette": 0.06071438640356064
+  },
+  "visualization": {
+    "pca_variance_explained": [
+      0.0851074680685997,
+      0.07000657171010971
+    ],
+    "visualization_saved": "iter_01_embedding_clusters.png"
+  },
+  "success_criteria": {
+    "true_domain_threshold": 0.3,
+    "random_baseline_threshold": 0.1,
+    "true_domain_met": false,
+    "baseline_met": true,
+    "hypothesis_supported": false
+  },
+  "sample_texts": {
+    "news": [
+      "Breaking: Global climate summit reaches historic agreement on carbon emission targets.",
+      "Tech giants invest $50 billion in AI research as competition intensifies globally.",
+      "Solar energy costs drop 85% in past decade, making renewables most affordable option."
+    ],
+    "social_media": [
+      "Honestly can't believe people still deny climate change when it's literally 90\u00b0F in December \ud83e\udd26\u200d\u2640\ufe0f",
+      "AI is getting scary good... just had ChatGPT write my entire presentation and it's better than I could do",
+      "Finally got solar panels installed! My electric bill is basically $0 now. Best investment ever! \u2600\ufe0f"
+    ],
+    "scientific": [
+      "Recent studies demonstrate significant correlations between atmospheric CO2 concentrations and global temperature anomalies.",
+      "Machine learning algorithms show promising results in protein folding prediction with 95% accuracy rates.",
+      "Photovoltaic cell efficiency improvements reach 47% through perovskite-silicon tandem architecture."
+    ]
+  }
 }
