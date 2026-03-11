@@ -13,8 +13,10 @@ for line in ENV_PATH.read_text().splitlines():
         os.environ.setdefault(k.strip(), v.strip())
 
 from openai import OpenAI
+from anthropic import Anthropic
 
-openai_client = OpenAI(timeout=600.0)  # GPT-5.4-pro can be slow for code gen
+openai_client = OpenAI(timeout=600.0)
+anthropic_client = Anthropic()
 REPO_ROOT = Path(__file__).parent.parent
 LOGS_DIR = REPO_ROOT / "logs" / "runs"
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -201,11 +203,19 @@ def format_failure_memory(failures: list[dict], max_entries: int = 3) -> str:
 # ---------------------------------------------------------------------------
 # LLM wrappers and execution
 # ---------------------------------------------------------------------------
-def call_gpt(system: str, user: str, model: str = "gpt-5.4-pro") -> str:
-    """Call GPT model via Responses API. Default gpt-5.4-pro, use gpt-4.1 for long code gen."""
+def call_gpt(system: str, user: str) -> str:
+    """Call GPT-5.4-pro via Responses API for idea gen."""
     full_input = system + "\n\n" + user
-    resp = openai_client.responses.create(model=model, input=full_input)
+    resp = openai_client.responses.create(model="gpt-5.4-pro", input=full_input)
     return resp.output_text
+
+
+def call_claude_code(system: str, user: str, max_tokens: int = 8000) -> str:
+    """Call Claude Sonnet 4 for code generation. Fast, reliable, good at coding."""
+    resp = anthropic_client.messages.create(
+        model="claude-sonnet-4-20250514", max_tokens=max_tokens,
+        system=system, messages=[{"role": "user", "content": user}])
+    return resp.content[0].text
 
 
 def call_judge(prompt: str, use_pro: bool = True) -> dict:
@@ -348,8 +358,8 @@ def run_loop(n_iterations: int = 3, max_api_calls: int = 0, time_limit_min: int 
         code_kw = dict(idea_spec=idea_spec, results_path=results_path, max_api_calls=max_api_calls,
                        time_limit_min=time_limit_min, feedback_section=fb_section,
                        failure_memory=format_failure_memory(failure_memory), min_samples=MIN_SAMPLES)
-        print(f"  [3] Generating code (gpt-4.1)...", end=" ", flush=True)
-        code = _strip_fences(call_gpt(CODE_GEN_SYSTEM, CODE_GEN_PROMPT.format(**code_kw), model="gpt-4.1"))
+        print(f"  [3] Generating code (Claude)...", end=" ", flush=True)
+        code = _strip_fences(call_claude_code(CODE_GEN_SYSTEM, CODE_GEN_PROMPT.format(**code_kw)))
         d["code"] = code; (run_dir / f"iter_{it:02d}_experiment.py").write_text(code)
         print(f"{len(code.splitlines())} lines", flush=True)
 
@@ -372,7 +382,7 @@ def run_loop(n_iterations: int = 3, max_api_calls: int = 0, time_limit_min: int 
             # Repair
             repair_prompt = CODE_GEN_PROMPT.format(**{**code_kw, "failure_memory": format_failure_memory(failure_memory)})
             repair_prompt += f"\n\nPREVIOUS ATTEMPT FAILED:\n{chr(10).join(err_lines)}\nFix the error."
-            code = _strip_fences(call_gpt(CODE_GEN_SYSTEM, repair_prompt, model="gpt-4.1"))
+            code = _strip_fences(call_claude_code(CODE_GEN_SYSTEM, repair_prompt))
             (run_dir / f"iter_{it:02d}_repair.py").write_text(code)
             stdout, stderr, rc = run_code(code, timeout_sec=time_limit_min * 60 + 60)
             if rc != 0:

@@ -11,19 +11,20 @@
 | v3 | GPT-5.4-pro | Claude Sonnet 4 | +Thompson Sampling +多様性制約 | 3→2→**5**→2 | **5** | 4つの異なるテーマを探索 |
 | v4 | GPT-5.4-pro | Claude Sonnet 4 | +堅牢化コード生成 +ライブラリ制限 | 4→**5**→2→2 | **5** | Iter2で仮説支持、実行安定化 |
 | v5 | GPT-5.4-pro | GPT-5.4-pro/4.1 | +ローカル専用 +API不要 | 2→**4**→2 | **4** | Mac M1ローカル完結、3iter |
+| v6 | GPT-5.4-pro | GPT-5.4-pro+Claude | +Claudeコード生成 | **6**→3→3 | **6** | Claude code genで全完走、最高スコア |
 
 ### スコア推移グラフ
 
 ```
 Score
- 6 │  ●           ●
+ 6 │  ●           ●                                          ●
  5 │                          ●              ●
  4 │      ●                       ●              ●       ●
- 3 │          ●   ●  ●  ●  ●
- 2 │                      ●           ●  ●           ●  ●  ●     ●
+ 3 │          ●   ●  ●  ●  ●                                    ●  ●
+ 2 │                      ●           ●  ●           ●  ●  ●
  1 │
-   └──1──2──3──4──1──2──3──4──1──2──3──4──1──2──3──4──1──2──3──
-       v1 (gpt-4o)  v2 (5.4-pro) v3 (+TS)     v4 (+robust) v5(local)
+   └──1──2──3──4──1──2──3──4──1──2──3──4──1──2──3──4──1──2──3──1──2──3
+       v1 (gpt-4o)  v2 (5.4-pro) v3 (+TS)     v4 (+robust) v5     v6
 ```
 
 ---
@@ -149,6 +150,28 @@ Score
 
 ---
 
+## Run v6: Claude コード生成 + GPT-5.4-pro アイデア/ジャッジ - 20260311_232915
+
+**変更点**: コード生成をgpt-4.1からClaude Sonnet 4に変更。アイデア生成はGPT-5.4-pro、ジャッジはGPT-5.4-pro維持。
+
+| Iter | Score | Direction | Finding |
+|------|-------|-----------|---------|
+| 1 | **6** | **text_statistics** | **unigram hashでは語順変化に不感(ratio~0)、bigram追加で強い順序感度(ratio~0.82)** |
+| 2 | 3 | reasoning_analysis | state-replay verifierの改善が微小(+0.045 F1)、報告値に不整合あり |
+| 3 | 3 | prompt_engineering | 全条件で100%精度、ベンチマークが容易すぎて仮説検証不可 |
+
+**改善**:
+- **全3イテレーションがエラーなく完走** (v5では2/3が失敗)
+- Iter 1で**スコア6/10を達成** (GPT-5.4-pro judge下での最高スコア)
+- Claudeのコード生成が高速かつ信頼性が高い
+
+**分析**:
+- Claudeのコード生成はgpt-4.1/GPT-5.4-proより実行成功率が高い (3/3 vs v5の1/3)
+- Iter 1の成功要因: 明確な数値比較、成功閾値との照合、十分なサンプルサイズ
+- Iter 2-3のスコア低下: 方向が変わるためフィードバックが活きない問題は依然残存
+
+---
+
 ## ファイル構成
 
 ```
@@ -157,7 +180,8 @@ logs/runs/
 ├── 20260311_183804/   # v2 (GPT-5.4-pro judge, sequential)
 ├── 20260311_200319/   # v3 (+Thompson Sampling, +diversity)
 ├── 20260311_202635/   # v4 (+robustified code gen)
-└── 20260311_220218/   # v5 (GPT-5.4-pro idea gen, gpt-4.1 code gen, local-only)
+├── 20260311_220218/   # v5 (GPT-5.4-pro idea gen, gpt-4.1 code gen, local-only)
+└── 20260311_232915/   # v6 (GPT-5.4-pro idea gen, Claude code gen, local-only)
 ```
 
 ---
