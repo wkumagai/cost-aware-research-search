@@ -1,0 +1,54 @@
+{
+  "run_id": "20260311_220218",
+  "scores": [
+    2,
+    4,
+    2
+  ],
+  "final_idea_spec": "hypothesis: \"When average next-token entropy is held approximately constant, truncation-based decoding (top-k or top-p) will still produce more short-range self-overlap than smooth full-support temperature scaling. This would suggest that repetition in LLM-like text is driven by tail truncation itself, not only by lower token uncertainty.\"\nintervention_family: \"model_behavior\"\ntarget_component: \"Decoding-rule effects on repeated n-gram statistics in locally generated autoregressive text\"\nimplementation_scope:\n  lines_estimate: 190\n  dependencies:\n    - \"numpy\"\n    - \"scipy\"\n    - \"matplotlib\"\n  compute: \"cpu\"\n  time_estimate_min: 5\nproxy_evaluation:\n  metric: \"self_overlap_auc\"\n  baseline: \"Full-support temperature sampling tuned to match the average next-token entropy of the truncation conditions\"\n  success_threshold: \"Either top-k or top-p yields at least 15% higher self_overlap_auc than the entropy-matched baseline, with a bootstrap 95% confidence interval above 0.\"\nfull_evaluation:\n  dataset: \"A fully local synthetic corpus of 240 documents (60 per condition, 400 tokens each) generated from a Zipfian topic-switching autoregressive token model with sentence-boundary tokens; conditions are temperature-1 reference, entropy-matched full-support temperature sampling, top-k sampling, and top-p sampling.\"\n  n_samples: 240\n  n_conditions: 4\nexpected_failure_modes:\n  - \"The synthetic generator may be too simple, causing all decoding rules to look similar.\"\n  - \"Entropy matching across decoding strategies may be imperfect, confounding the comparison.\"\n  - \"Document length may be too short for stable higher-order n-gram repetition estimates.\"\n  - \"If the base distribution is already very peaked, top-k and top-p may not alter the sequence statistics much.\"\nrollback_plan: \"If entropy matching is unstable, switch to matched perplexity instead of matched entropy and keep the same overlap analysis. If repeated n-grams are too sparse, reduce vocabulary size or increase document length slightly while staying under the runtime budget; if effects remain weak, use longest repeated n-gram length and repetition burst index as secondary statistics.\"",
+  "final_judgment": {
+    "novelty": {
+      "score": 3,
+      "reason": "failed"
+    },
+    "rigor": {
+      "score": 1,
+      "reason": "failed"
+    },
+    "significance": {
+      "score": 3,
+      "reason": "failed"
+    },
+    "completeness": {
+      "score": 1,
+      "reason": "failed"
+    },
+    "overall": {
+      "score": 2,
+      "reason": "Experiment failed to execute"
+    },
+    "key_finding": "Experiment failed to execute.",
+    "improvement_suggestions": [
+      "Simplify experiment",
+      "Fewer API calls",
+      "Better error handling"
+    ]
+  },
+  "score_progression": [
+    {
+      "iteration": 1,
+      "score": 2,
+      "key_finding": "Experiment failed to execute."
+    },
+    {
+      "iteration": 2,
+      "score": 4,
+      "key_finding": "Explicit numbering modestly improved performance over flat prose in the surrogate benchmark (exact match 0.307 -> 0.337; precedence error 0.026 -> 0.018), but the effect was far smaller than the preregistered success threshold, and adding a recap did not provide additional benefit."
+    },
+    {
+      "iteration": 3,
+      "score": 2,
+      "key_finding": "Experiment failed to execute."
+    }
+  ]
+}

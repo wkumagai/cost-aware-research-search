@@ -13,10 +13,8 @@ for line in ENV_PATH.read_text().splitlines():
         os.environ.setdefault(k.strip(), v.strip())
 
 from openai import OpenAI
-from anthropic import Anthropic
 
-openai_client = OpenAI()
-anthropic_client = Anthropic()
+openai_client = OpenAI(timeout=600.0)  # GPT-5.4-pro can be slow for code gen
 REPO_ROOT = Path(__file__).parent.parent
 LOGS_DIR = REPO_ROOT / "logs" / "runs"
 LOGS_DIR.mkdir(parents=True, exist_ok=True)
@@ -40,21 +38,26 @@ RESEARCH_DIRECTIONS = [
 IDEA_SPEC_TEMPLATE = (REPO_ROOT / "templates" / "idea_spec.yaml").read_text()
 
 IDEA_GEN_SYSTEM = """You are an AI research scientist generating structured research ideas
-executable locally on a laptop in under 10 minutes with no GPU.
+executable 100% locally on a Mac M1 laptop in under 10 minutes with no GPU and NO API calls.
 
-CONSTRAINTS:
-- Python only, no GPU, no model training
-- API calls under 30 (use gpt-4o-mini for cheap experiments)
+CRITICAL CONSTRAINTS:
+- Python only, no GPU, no model training, NO INTERNET/API CALLS
+- ALL data must be generated locally (synthetic data, algorithmic generation, local files)
 - Must have a clear baseline comparison
-- Runtime < 10 min on CPU
+- Runtime < 10 min on Apple M1 CPU
 - Minimum n_samples: 50 data points (set n_samples >= 50 in the spec)
-- ALLOWED LIBRARIES: json, os, sys, time, math, random, re, collections, statistics,
-  numpy, scipy, sklearn, matplotlib, openai, anthropic, sentence_transformers
-- Do NOT rely on: textstat, nltk, spacy, pandas, transformers, torch
+- ALLOWED LIBRARIES ONLY: json, os, sys, time, math, random, re, collections, statistics,
+  numpy, scipy, sklearn, matplotlib, sentence_transformers
+- Do NOT use: openai, anthropic, textstat, nltk, spacy, pandas, transformers, torch, requests, httpx
+- Do NOT make any HTTP requests or API calls
 
-IMPORTANT: Generate DIVERSE ideas. Do NOT repeat embedding clustering or syntactic complexity themes.
-Good experiment ideas: prompting effects, model calibration, output format impacts, few-shot ordering,
-temperature effects, semantic similarity, text generation statistics, etc."""
+IMPORTANT: Generate COMPLETELY NEW and DIVERSE ideas. Do NOT repeat any of these past themes:
+embedding clustering, syntactic complexity, CoT prompting, silhouette score, paraphrase distance.
+
+Good LOCAL experiment ideas: algorithm comparison on synthetic data, statistical distribution analysis,
+optimization algorithm benchmarking, clustering algorithm comparison, dimensionality reduction analysis,
+random graph properties, time-series analysis on synthetic signals, feature selection methods comparison,
+sampling strategies comparison, numerical precision analysis, etc."""
 
 IDEA_GEN_PROMPT = """Generate a research idea as a YAML idea spec.
 Research direction: {direction_name}
@@ -66,25 +69,25 @@ Follow this template:
 {template}"""
 
 CODE_GEN_SYSTEM = """You are an expert Python programmer for research experiments.
-Write self-contained, executable scripts that run on CPU in <10 min, print results, save JSON.
+Write self-contained, executable scripts that run 100% LOCALLY on Mac M1 CPU in <10 min.
+NO API calls, NO internet access. All data must be generated locally.
 
 ALLOWED LIBRARIES ONLY (do NOT import anything else):
 - Standard library: json, os, sys, time, math, random, re, collections, statistics, pathlib, datetime
-- openai, anthropic (for API calls)
 - numpy, scipy
 - sklearn (scikit-learn)
 - matplotlib
-- sentence_transformers (SentenceTransformer)
-Do NOT use: textstat, nltk, spacy, pandas, transformers, torch, tensorflow, or any other library.
+- sentence_transformers (SentenceTransformer) - for LOCAL embedding only, no API
+Do NOT use: openai, anthropic, requests, httpx, textstat, nltk, spacy, pandas, transformers, torch, tensorflow.
+Do NOT make any HTTP requests or API calls.
 
 CRITICAL CODE QUALITY RULES:
 - ALL numpy values must be converted to float() before JSON serialization
-- Use try/except around EVERY API call with retry logic
 - Always print progress (e.g. "Processing 5/50...")
-- If an API call fails after retry, skip that sample and continue (do NOT abort)
 - At the end, verify you have >= 50 valid data points before saving
 - Use json.dumps with default=str as fallback for serialization
-- Print a clear results table at the very end with all conditions"""
+- Print a clear results table at the very end with all conditions
+- Use random seeds for reproducibility (e.g. np.random.seed(42))"""
 
 CODE_GEN_PROMPT = """{feedback_section}
 {failure_memory}
@@ -92,11 +95,12 @@ Write a complete Python experiment script based on this idea spec:
 ```yaml
 {idea_spec}
 ```
-Requirements: API keys from env, save JSON to {results_path}, summary table, max {max_api_calls} API calls,
-runtime < {time_limit_min} min, error handling, use `max_completion_tokens` for OpenAI chat.
+Requirements: save JSON to {results_path}, summary table,
+runtime < {time_limit_min} min, NO API calls, NO internet, all data generated locally.
 - MINIMUM SAMPLE SIZE: {min_samples} data points. Do NOT generate fewer samples.
-- ONLY use allowed libraries (see system prompt). No pip install.
+- ONLY use allowed libraries (see system prompt). No pip install. No API calls.
 - Print progress and final results table to stdout.
+- Use random seeds for reproducibility.
 Return ONLY Python code, no markdown fences."""
 
 JUDGE_PROMPT = """Evaluate this experiment.
@@ -197,11 +201,11 @@ def format_failure_memory(failures: list[dict], max_entries: int = 3) -> str:
 # ---------------------------------------------------------------------------
 # LLM wrappers and execution
 # ---------------------------------------------------------------------------
-def call_claude(system: str, user: str, max_tokens: int = 4000) -> str:
-    resp = anthropic_client.messages.create(
-        model="claude-sonnet-4-20250514", max_tokens=max_tokens,
-        system=system, messages=[{"role": "user", "content": user}])
-    return resp.content[0].text
+def call_gpt(system: str, user: str, model: str = "gpt-5.4-pro") -> str:
+    """Call GPT model via Responses API. Default gpt-5.4-pro, use gpt-4.1 for long code gen."""
+    full_input = system + "\n\n" + user
+    resp = openai_client.responses.create(model=model, input=full_input)
+    return resp.output_text
 
 
 def call_judge(prompt: str, use_pro: bool = True) -> dict:
@@ -267,7 +271,7 @@ def _dummy_feedback():
 # ---------------------------------------------------------------------------
 # Main loop
 # ---------------------------------------------------------------------------
-def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int = 5):
+def run_loop(n_iterations: int = 3, max_api_calls: int = 0, time_limit_min: int = 5):
     run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
     run_dir = LOGS_DIR / run_id; run_dir.mkdir(parents=True, exist_ok=True)
     results_dir = REPO_ROOT / "results"; results_dir.mkdir(exist_ok=True)
@@ -302,7 +306,7 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
                 fb = feedback_history[-1]
                 fb_context = (f"Previous direction scored {fb['overall']['score']}/10. "
                               f"Now exploring '{direction['name']}' instead. Generate a COMPLETELY NEW idea.")
-            idea_spec = _strip_fences(call_claude(IDEA_GEN_SYSTEM, IDEA_GEN_PROMPT.format(
+            idea_spec = _strip_fences(call_gpt(IDEA_GEN_SYSTEM, IDEA_GEN_PROMPT.format(
                 direction_name=direction["name"], direction_description=direction["description"],
                 feedback_section=fb_context, template=IDEA_SPEC_TEMPLATE)))
         else:
@@ -310,7 +314,7 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
             fb = feedback_history[-1]
             sug = "\n".join(f"- {s}" for s in fb.get("improvement_suggestions", []))
             fm = format_failure_memory(failure_memory)
-            idea_spec = _strip_fences(call_claude(IDEA_GEN_SYSTEM, IMPROVE_PROMPT.format(
+            idea_spec = _strip_fences(call_gpt(IDEA_GEN_SYSTEM, IMPROVE_PROMPT.format(
                 prev_spec=idea_spec, overall_score=fb["overall"]["score"],
                 key_finding=fb.get("key_finding", "N/A"), suggestions=sug, failure_info=fm or "None")))
         d["idea_spec"] = idea_spec
@@ -325,7 +329,7 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
         if not s0["passed"]:
             print(f"FAIL {s0}", flush=True)
             print("      Regenerating...", flush=True)
-            idea_spec = _strip_fences(call_claude(IDEA_GEN_SYSTEM, IDEA_GEN_PROMPT.format(
+            idea_spec = _strip_fences(call_gpt(IDEA_GEN_SYSTEM, IDEA_GEN_PROMPT.format(
                 direction_name=direction["name"], direction_description=direction["description"],
                 feedback_section="Previous spec failed validation. Ensure all fields, cpu, time<=10, n_samples>=50.",
                 template=IDEA_SPEC_TEMPLATE)))
@@ -344,8 +348,8 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
         code_kw = dict(idea_spec=idea_spec, results_path=results_path, max_api_calls=max_api_calls,
                        time_limit_min=time_limit_min, feedback_section=fb_section,
                        failure_memory=format_failure_memory(failure_memory), min_samples=MIN_SAMPLES)
-        print(f"  [3] Generating code...", end=" ", flush=True)
-        code = _strip_fences(call_claude(CODE_GEN_SYSTEM, CODE_GEN_PROMPT.format(**code_kw), max_tokens=8000))
+        print(f"  [3] Generating code (gpt-4.1)...", end=" ", flush=True)
+        code = _strip_fences(call_gpt(CODE_GEN_SYSTEM, CODE_GEN_PROMPT.format(**code_kw), model="gpt-4.1"))
         d["code"] = code; (run_dir / f"iter_{it:02d}_experiment.py").write_text(code)
         print(f"{len(code.splitlines())} lines", flush=True)
 
@@ -368,7 +372,7 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
             # Repair
             repair_prompt = CODE_GEN_PROMPT.format(**{**code_kw, "failure_memory": format_failure_memory(failure_memory)})
             repair_prompt += f"\n\nPREVIOUS ATTEMPT FAILED:\n{chr(10).join(err_lines)}\nFix the error."
-            code = _strip_fences(call_claude(CODE_GEN_SYSTEM, repair_prompt, max_tokens=8000))
+            code = _strip_fences(call_gpt(CODE_GEN_SYSTEM, repair_prompt, model="gpt-4.1"))
             (run_dir / f"iter_{it:02d}_repair.py").write_text(code)
             stdout, stderr, rc = run_code(code, timeout_sec=time_limit_min * 60 + 60)
             if rc != 0:
@@ -419,8 +423,8 @@ def run_loop(n_iterations: int = 4, max_api_calls: int = 30, time_limit_min: int
 if __name__ == "__main__":
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("-n", "--iterations", type=int, default=4)
-    p.add_argument("--max-api-calls", type=int, default=30)
+    p.add_argument("-n", "--iterations", type=int, default=3)
+    p.add_argument("--max-api-calls", type=int, default=0)
     p.add_argument("--time-limit", type=int, default=5)
     a = p.parse_args()
     run_loop(n_iterations=a.iterations, max_api_calls=a.max_api_calls, time_limit_min=a.time_limit)
